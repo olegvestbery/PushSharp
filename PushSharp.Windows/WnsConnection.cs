@@ -61,6 +61,7 @@ namespace PushSharp.Windows
             //TODO: Microsoft recommends we disable expect-100 to improve latency
             // Not sure how to do this in httpclient
             var http = new HttpClient ();
+            http.Timeout = Configuration.Timeout;
 
             http.DefaultRequestHeaders.TryAddWithoutValidation ("X-WNS-Type", string.Format ("wns/{0}", notification.Type.ToString ().ToLower ()));
             if(!http.DefaultRequestHeaders.Contains("Authorization")) //prevent double values

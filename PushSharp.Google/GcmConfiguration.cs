@@ -24,6 +24,17 @@ namespace PushSharp.Google
             this.ValidateServerCertificate = false;
         }
 
+        public GcmConfiguration(string optionalSenderID, string senderAuthToken, string optionalApplicationIdPackageName, string gcmUrl)
+        {
+            this.SenderID = optionalSenderID;
+            this.SenderAuthToken = senderAuthToken;
+            this.ApplicationIdPackageName = optionalApplicationIdPackageName;
+            this.GcmUrl = gcmUrl;
+            this.Timeout = new TimeSpan(0,1,30);
+
+            this.ValidateServerCertificate = false;
+        }
+
         public string SenderID { get; private set; }
 
         public string SenderAuthToken { get; private set; }
@@ -34,9 +45,15 @@ namespace PushSharp.Google
 
         public string GcmUrl { get; set; }
 
+        public TimeSpan Timeout { get; set; }
+
         public void OverrideUrl (string url)
         {
             GcmUrl = url;
+        }
+        public void OvverideTimeout(TimeSpan to)
+        {
+            Timeout = to;
         }
     }
 }

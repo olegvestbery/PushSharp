@@ -9,11 +9,17 @@ namespace PushSharp.Windows
             PackageName = packageName;
             PackageSecurityIdentifier = packageSecurityIdentifier;
             ClientSecret = clientSecret;
+            Timeout = new TimeSpan(0, 1, 30);
         }
 
         public string PackageName { get; private set; }
         public string PackageSecurityIdentifier { get; private set; }
         public string ClientSecret { get; private set; }
+        public TimeSpan Timeout { get; set; }
+        public void OvverideTimeout(TimeSpan to)
+        {
+            Timeout = to;
+        }
     }
 }
 

@@ -43,6 +43,10 @@ namespace PushSharp.Google
             http.DefaultRequestHeaders.UserAgent.Clear ();
             http.DefaultRequestHeaders.UserAgent.Add (new ProductInfoHeaderValue ("PushSharp", "3.0"));
             http.DefaultRequestHeaders.TryAddWithoutValidation ("Authorization", "key=" + Configuration.SenderAuthToken);
+
+            if (configuration.Timeout!=null)
+                http.Timeout = configuration.Timeout;
+
         }
 
         public GcmConfiguration Configuration { get; private set; }
