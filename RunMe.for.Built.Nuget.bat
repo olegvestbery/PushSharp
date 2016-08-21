@@ -1,0 +1,1 @@
+buildtools\tools\nuget pack Package.nuspec -prop Configuration=Release
